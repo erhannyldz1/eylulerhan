@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Erhan'ı Ne Kadar Tanıyorsun?</title>
+    
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+            min-height: 100vh;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .header h1 {
+            color: #2b5876;
+            font-size: 2.3rem;
+            margin-bottom: 5px;
+        }
+
+        .main-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            max-width: 1100px;
+            margin: 0 auto;
+            gap: 20px;
+        }
+
+        .photo-column {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            position: sticky;
+            top: 20px;
+        }
+
+        .photo-column img {
+            width: 170px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .photo-column img:hover {
+            transform: scale(1.05);
+        }
+
+        .center-column {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        .question-card {
+            background: rgba(255, 255, 255, 0.92);
+            width: 100%;
+            max-width: 500px;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            border-left: 5px solid #4e54c8;
+        }
+
+        .question-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 12px;
+        }
+
+        .option {
+            display: block;
+            background: #f8f9fa;
+            padding: 12px 15px;
+            margin: 8px 0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.2s ease;
+            border: 1px solid #e9ecef;
+        }
+
+        .option:hover {
+            background: #e0c3fc;
+        }
+
+        .option input {
+            margin-right: 10px;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #4e54c8, #8f94fb);
+            color: white;
+            border: none;
+            padding: 14px 35px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 25px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            transition: transform 0.2s ease;
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            margin-bottom: 30px;
+            color: #4e54c8;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .result-card {
+            display: none;
+            background: white;
+            width: 100%;
+            max-width: 500px;
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+            text-align: center;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+            font-size: 1.1rem;
+        }
+
+        /* MOBİL UYUMLULUK (Telefon Ekranları İçin) */
+        @media (max-width: 768px) {
+            body {
+                padding: 12px;
+            }
+
+            .main-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+
+            .photo-column {
+                flex-direction: row;
+                justify-content: center;
+                position: static;
+                width: 100%;
+            }
+
+            .photo-column img {
+                width: 45%;
+                max-width: 150px;
+                height: 130px;
+            }
+
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            .question-card, .result-card {
+                max-width: 100%;
+                padding: 15px;
+            }
+
+            .submit-btn {
+                width: 100%;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>💙 ERHAN'IN TESTİ 💙</h1>
+        <p><b>Bakalım Erhan'ı ne kadar iyi tanıyorsun?</b></p>
+    </div>
+
+    <div class="main-container">
+        
+        <!-- SOL RESİMLER -->
+        <div class="photo-column">
+            <img src="./images/2.jpeg" alt="Resim 1">
+            <img src="./images/erhaneylul1.jpeg" alt="Resim 2">
+        </div>
+
+        <!-- ORTA TEST ALANI -->
+        <div class="center-column">
+            
+            <form id="erhanForm" onsubmit="testiHesapla(event)">
+                
+                <!-- 1. SORU -->
+                <div class="question-card">
+                    <div class="question-title">1. Erhan'ın uğurlu sayısı kaçtır?</div>
+                    <label class="option"><input type="radio" name="q1" value="a"> A) 7</label>
+                    <label class="option"><input type="radio" name="q1" value="b"> B) 10</label>
+                    <label class="option"><input type="radio" name="q1" value="c"> C) 17</label>
+                    <label class="option"><input type="radio" name="q1" value="d"> D) 3</label>
+                </div>
+
+                <!-- 2. SORU -->
+                <div class="question-card">
+                    <div class="question-title">2. Erhan aşağıdakilerden hangisine kesinlikle tahammül edemez?</div>
+                    <label class="option"><input type="radio" name="q2" value="a"> A) Uykusuz kalmaya</label>
+                    <label class="option"><input type="radio" name="q2" value="b"> B) Açlığa</label>
+                    <label class="option"><input type="radio" name="q2" value="c"> C) İnternetin yavaşlamasına / kopmasına</label>
+                    <label class="option"><input type="radio" name="q2" value="d"> D) Randevulara geç kalınmasına</label>
+                </div>
+
+                <!-- 3. SORU -->
+                <div class="question-card">
+                    <div class="question-title">3. Erhan'ın en sevdiği 2 arkadaşının baş harfleri hangileridir?</div>
+                    <label class="option"><input type="radio" name="q3" value="a"> A) U ve S</label>
+                    <label class="option"><input type="radio" name="q3" value="b"> B) E ve S</label>
+                    <label class="option"><input type="radio" name="q3" value="c"> C) M ve A</label>
+                    <label class="option"><input type="radio" name="q3" value="d"> D) K ve B</label>
+                </div>
+
+                <!-- 4. SORU -->
+                <div class="question-card">
+                    <div class="question-title">4. Erhan'ın boş zamanlarında yapmaktan en çok zevk aldığı şey nedir?</div>
+                    <label class="option"><input type="radio" name="q4" value="a"> A) Oyun oynamak</label>
+                    <label class="option"><input type="radio" name="q4" value="b"> B) Müzik dinleyip yeni şarkılar keşfetmek</label>
+                    <label class="option"><input type="radio" name="q4" value="c"> C) Yeni yazılım/kodlama projeleri geliştirmek</label>
+                    <label class="option"><input type="radio" name="q4" value="d"> D) Film veya dizi maratonu yapmak</label>
+                </div>
+
+                <!-- 5. SORU -->
+                <div class="question-card">
+                    <div class="question-title">5. Erhan'ın en sevdiği yemekler aşağıdakilerden hangisidir?</div>
+                    <label class="option"><input type="radio" name="q5" value="a"> A) Tavuk pilav, sarma, dolma ve etli yemekler</label>
+                    <label class="option"><input type="radio" name="q5" value="b"> B) Hamburger, pizza ve fast food çeşitleri</label>
+                    <label class="option"><input type="radio" name="q5" value="c"> C) Makarna, mantı ve hamur işleri</label>
+                    <label class="option"><input type="radio" name="q5" value="d"> D) Balık, deniz ürünleri ve zeytinyağlılar</label>
+                </div>
+
+                <!-- 6. SORU -->
+                <div class="question-card">
+                    <div class="question-title">6. Erhan'ın karşı cinste en nefret ettiği özellik nedir?</div>
+                    <label class="option"><input type="radio" name="q6" value="a"> A) Ağzını yayarak / mıy mıy konuşması</label>
+                    <label class="option"><input type="radio" name="q6" value="b"> B) Sürekli geç kalmayı alışkanlık haline getirmesi</label>
+                    <label class="option"><input type="radio" name="q6" value="c"> C) Yüksek sesle ve çok hızlı konuşması</label>
+                    <label class="option"><input type="radio" name="q6" value="d"> D) Mesajlara geç dönmesi veya ilgisiz davranması</label>
+                </div>
+
+                <!-- 7. SORU -->
+                <div class="question-card">
+                    <div class="question-title">7. Erhan'ın Türkiye ligi hariç ve Icardi dışında dünya genelinde en çok sevdiği futbolcu kimdir?</div>
+                    <label class="option"><input type="radio" name="q7" value="a"> A) Lionel Messi</label>
+                    <label class="option"><input type="radio" name="q7" value="b"> B) Cristiano Ronaldo</label>
+                    <label class="option"><input type="radio" name="q7" value="c"> C) Kylian Mbappé</label>
+                    <label class="option"><input type="radio" name="q7" value="d"> D) Neymar Jr.</label>
+                </div>
+
+                <!-- 8. SORU -->
+                <div class="question-card">
+                    <div class="question-title">8. Erhan'ın küçüklükten beri en çok sevdiği süper kahraman kimdir?</div>
+                    <label class="option"><input type="radio" name="q8" value="a"> A) Spiderman (Örümcek Adam)</label>
+                    <label class="option"><input type="radio" name="q8" value="b"> B) Batman</label>
+                    <label class="option"><input type="radio" name="q8" value="c"> C) Iron Man (Demir Adam)</label>
+                    <label class="option"><input type="radio" name="q8" value="d"> D) Superman</label>
+                </div>
+
+                <!-- 9. SORU -->
+                <div class="question-card">
+                    <div class="question-title">9. Erhan'ın en çok yediği fast food yiyecek nedir?</div>
+                    <label class="option"><input type="radio" name="q9" value="a"> A) Hamburger</label>
+                    <label class="option"><input type="radio" name="q9" value="b"> B) Pizza</label>
+                    <label class="option"><input type="radio" name="q9" value="c"> C) Et / Tavuk Dürüm</label>
+                    <label class="option"><input type="radio" name="q9" value="d"> D) Çıtır Tavuk Kovası</label>
+                </div>
+
+                <!-- 10. SORU -->
+                <div class="question-card">
+                    <div class="question-title">10. Erhan'ın bu dünyada en çok değer verdiği insan kimdir?</div>
+                    <label class="option"><input type="radio" name="q10" value="a"> A) İlk ve tek aşkı Şevval Eylül Asar</label>
+                    <label class="option"><input type="radio" name="q10" value="b"> B) —</label>
+                    <label class="option"><input type="radio" name="q10" value="c"> C) —</label>
+                    <label class="option"><input type="radio" name="q10" value="d"> D) —</label>
+                </div>
+
+                <!-- GÖNDER BUTONU -->
+                <center>
+                    <input type="submit" value="✨ Testi Tamamla ✨" class="submit-btn">
+                </center>
+
+            </form>
+
+            <!-- SONUÇ KUTUSU -->
+            <div id="sonuc-kutusu" class="result-card">
+                <div id="sonuc-metni"></div>
+            </div>
+
+            <center>
+                <a href="index.html" class="back-link">⬅️ Ana Sayfaya Dön</a>
+            </center>
+
+        </div>
+
+        <!-- SAĞ RESİMLER -->
+        <div class="photo-column">
+            <img src="./images/erhaneylul1.jpeg" alt="Resim 3">
+            <img src="./images/3.jpeg" alt="Resim 4">
+        </div>
+
+    </div>
+
+    <!-- JAVASCRIPT HESAPLAMA KODU -->
+    <script>
+        function testiHesapla(event) {
+            event.preventDefault();
+
+            const dogruCevaplar = {
+                q1: 'a',
+                q2: 'b',
+                q3: 'a',
+                q4: 'a',
+                q5: 'a',
+                q6: 'a',
+                q7: 'a',
+                q8: 'a',
+                q9: 'a',
+                q10: 'a'
+            };
+
+            let dogru = 0;
+            let yanlis = 0;
+            let bos = 0;
+
+            for (let soru in dogruCevaplar) {
+                const secilen = document.querySelector(`input[name="${soru}"]:checked`);
+                
+                if (!secilen) {
+                    bos++;
+                } else if (secilen.value === dogruCevaplar[soru]) {
+                    dogru++;
+                } else {
+                    yanlis++;
+                }
+            }
+
+            if (bos > 0) {
+                alert("Eylülcüm, lütfen tüm soruları işaretle! 👀");
+                return;
+            }
+
+            const kutu = document.getElementById("sonuc-kutusu");
+            const metin = document.getElementById("sonuc-metni");
+
+            let mesaj = `<b>Doğru Cevap:</b> ${dogru} / 10 | <b>Yanlış:</b> ${yanlis}<br><br>`;
+
+            if (dogru >= 7) {
+                kutu.style.borderLeft = "6px solid #2ed573";
+                mesaj += "🎉 <b>TEBRİKLER EYLÜL!</b> <br><br> Erhan'ı gerçekten kalbinde ve hafızanda çok iyi taşıyorsun! Ruh ikizi olduğunuz bir kez daha kanıtlandı ❤️✨";
+            } else {
+                kutu.style.borderLeft = "6px solid #ff4757";
+                mesaj += "😱 <b>REZALET EYLÜL!</b> <br><br> Sevgilini bu kadar az tanıyor olamazsın! Derhal baştan çözüyorsun veya Erhan'a kendini affettiriyorsun 😂💔";
+            }
+
+            metin.innerHTML = mesaj;
+            kutu.style.display = "block";
+            kutu.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+
+</body>
+</html>
