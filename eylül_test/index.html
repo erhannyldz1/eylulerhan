@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birbirimizi Ne Kadar Tanıyoruz?</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #a1c4fd 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.92);
+            max-width: 650px;
+            width: 100%;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        h1 {
+            color: #d63384;
+            font-size: 2.2rem;
+            margin-bottom: 8px;
+        }
+
+        p.subtitle {
+            font-size: 1.05rem;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        /* FOTOĞRAFLAR ALANI */
+        .photo-row {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .photo-row img {
+            width: 140px;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+            transition: transform 0.3s ease;
+        }
+
+        .photo-row img:hover {
+            transform: scale(1.05);
+        }
+
+        /* EYLÜL'E ÖZEL NOT KUTUSU */
+        .note-box {
+            background: #fff0f5;
+            border-left: 5px solid #ff4757;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            text-align: left;
+            font-size: 0.95rem;
+            color: #444;
+            line-height: 1.5;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .note-box b {
+            color: #d63384;
+        }
+
+        /* TEST KARTLARI */
+        .card-container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .test-card {
+            flex: 1;
+            min-width: 220px;
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .test-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .card-erhan {
+            border-top: 6px solid #4e54c8;
+        }
+
+        .card-eylul {
+            border-top: 6px solid #ff4757;
+        }
+
+        .card-icon {
+            font-size: 2.8rem;
+            margin-bottom: 8px;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 6px;
+        }
+
+        .card-title.erhan { color: #4e54c8; }
+        .card-title.eylul { color: #ff4757; }
+
+        .card-desc {
+            font-size: 0.88rem;
+            color: #666;
+        }
+
+        /* MOBİL UYUMLULUK */
+        @media (max-width: 600px) {
+            body {
+                padding: 12px;
+            }
+
+            .container {
+                padding: 20px 15px;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .photo-row img {
+                width: 110px;
+                height: 110px;
+            }
+
+            .note-box {
+                padding: 12px 15px;
+                font-size: 0.9rem;
+            }
+
+            .card-container {
+                flex-direction: column;
+            }
+
+            .test-card {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>❤️ AŞK TESTİ ❤️</h1>
+        <p class="subtitle">Bakalım birbirimizi ne kadar derinlemesine tanıyoruz?</p>
+
+        <!-- BİRLİKTE FOTOĞRAFLARINIZ -->
+        <div class="photo-row">
+            <img src="./images/erhaneylul1.jpeg" alt="Erhan ve Eylül 1">
+            <img src="./images/2.jpeg" alt="Erhan ve Eylül 2">
+        </div>
+
+        <!-- EYLÜL'E ÖZEL NOT KUTUSU -->
+        <div class="note-box">
+            <b>Eylül'e Küçük Bir Not:</b><br>
+            2025 Temmuzdan beri hayatımdaki en güzel detay. Bakalım soruları çözerken beni ne kadar iyi tanıdığını göreceğiz! Başarılar sevgilim ❤️
+        </div>
+
+        <div class="card-container">
+            <!-- Erhan'ın Testi Kartı -->
+            <a href="erhan.html" class="test-card card-erhan">
+                <div class="card-icon">💙</div>
+                <div class="card-title erhan">Erhan'ın Testi</div>
+                <div class="card-desc">Eylül'ün çözmesi için hazırlandı!</div>
+            </a>
+
+            <!-- Eylül'ün Testi Kartı -->
+            <a href="eylul.html" class="test-card card-eylul">
+                <div class="card-icon">💗</div>
+                <div class="card-title eylul">Eylül'ün Testi</div>
+                <div class="card-desc">Erhan'ın çözmesi için hazırlandı!</div>
+            </a>
+        </div>
+    </div>
+
+</body>
+</html>
